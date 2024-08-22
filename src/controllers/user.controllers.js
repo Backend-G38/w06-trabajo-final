@@ -53,6 +53,8 @@ const login = catchError(async (req, res) => {
   return res.json({ user, token })
 })
 
+
+
 module.exports = {
   getAll,
   create,
