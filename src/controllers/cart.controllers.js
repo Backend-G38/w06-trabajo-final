@@ -2,14 +2,27 @@ const catchError = require('../utils/catchError');
 const Cart = require('../models/Cart');
 
 const getAll = catchError(async (req, res) => {
-  const results = await Cart.findAll();
+  const userId = req.user.id
+  const results = await Cart.findAll({
+    where: { userId }
+  });
   return res.json(results);
 });
 
+// const create = catchError(async (req, res) => {
+//   const userId = req.user.id
+//   const result = await Cart.create({ ...req.body, userId });
+//   return res.status(201).json(result);
+// });
+
 const create = catchError(async (req, res) => {
-  const result = await Cart.create(req.body);
+  const userId = req.user.id
+  const { productId, quantity } = req.body
+  const body = { productId, quantity, userId }
+  const result = await Cart.create(body);
   return res.status(201).json(result);
 });
+
 
 const getOne = catchError(async (req, res) => {
   const { id } = req.params;
