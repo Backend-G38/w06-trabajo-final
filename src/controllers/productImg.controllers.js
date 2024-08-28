@@ -8,7 +8,6 @@ const getAll = catchError(async (req, res) => {
   return res.json(results);
 });
 
-
 const create = catchError(async (req, res) => {
   const { filename } = req.file
   // console.log(filename);
@@ -20,7 +19,6 @@ const create = catchError(async (req, res) => {
   return res.status(201).json(result)
 });
 
-
 const remove = catchError(async (req, res) => {
   const { id } = req.params;
   const image = await ProductImg.findByPk(id)
@@ -30,7 +28,6 @@ const remove = catchError(async (req, res) => {
   await image.destroy();
   return res.sendStatus(204);
 });
-
 
 module.exports = {
   getAll,
