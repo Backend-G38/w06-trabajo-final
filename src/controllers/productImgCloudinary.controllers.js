@@ -8,7 +8,7 @@ const { uploadToCloudinary, deleteFromCloudinary } = require('../utils/cloudinar
 const create = catchError(async (req, res) => {
   const { path, filename } = req.file
   const { url, public_id } = await uploadToCloudinary(path, filename)
-  console.log(public_id); //g-38-ecommerce/jean
+  // console.log(public_id); //g-38-ecommerce/jeans
   const body = { url, filename: public_id }
   const result = await ProductImg.create(body)
   return res.status(201).json(result)
