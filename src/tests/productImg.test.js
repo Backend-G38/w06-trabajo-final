@@ -23,8 +23,8 @@ test("POST -> 'URL_BASE', should status code 201 and res.body.url to be defined 
   const localImage = path.join(__dirname, '..', 'public', 'test.jpg')
   const res = await request(app)
     .post(URL_BASE)
-    .attach('image', localImage)
     .set("Authorization", `Bearer ${TOKEN}`)
+    .attach('image', localImage)
 
   imageId = res.body.id
 
